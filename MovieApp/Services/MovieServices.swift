@@ -13,7 +13,6 @@ let dataFetchUrl = "https://api.themoviedb.org/3/discover/movie?api_key=c9856d0c
 let apiKey = "c9856d0cb57c3f14bf75bdc6c063b8f3"
 
 
-
 enum MovieServices {
     case fetchMoviesListData
     case movieDetail(movieID: String)
