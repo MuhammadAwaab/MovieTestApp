@@ -16,7 +16,7 @@ protocol MainViewModelProtocol {
 class MainViewModel: MainViewModelProtocol {
    
     private var currentProvider: DataProviderProtocol
-    private let cellIdentifier = "MovieCell"
+    private let cellIdentifier = "MovieListCell"
     unowned var parentController: UIViewController
     
     var movieListData: MovieList? {
@@ -49,6 +49,14 @@ class MainViewModel: MainViewModelProtocol {
     
     func getCellIdentifier() -> String {
         return self.cellIdentifier
+    }
+    
+    func getNumberOfCellsToShow() -> Int {
+        if let movieData = movieListData, let resultsArray = movieData.results{
+            return resultsArray.count
+        } else {
+            return 0
+        }
     }
     
     func getDataDisplayed(at indexPath: IndexPath) -> Results? {
