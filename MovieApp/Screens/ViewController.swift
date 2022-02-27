@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    lazy var viewModel = {
+        MainViewModel(container: self)
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
