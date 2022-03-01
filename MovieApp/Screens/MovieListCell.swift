@@ -6,9 +6,26 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieListCell: UITableViewCell {
 
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieDateLabel: UILabel!
+    @IBOutlet weak var posterImageView: UIImageView!
+    
+    
+    var resultObjectToDisplay: Results? {
+        didSet {
+            movieTitleLabel.text = resultObjectToDisplay?.original_title ?? "N/A"
+            movieDateLabel.text = resultObjectToDisplay?.release_date ?? "N/A"
+            if let imagePath = resultObjectToDisplay?.poster_path, let imageURL = imagePath.getPosterImageURL() {
+                posterImageView.kf.setImage(with: imageURL)
+            }
+
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,3 +38,11 @@ class MovieListCell: UITableViewCell {
     }
 
 }
+
+extension String {
+    func getPosterImageURL() -> URL? {
+        let urlString = "https://image.tmdb.org/t/p/w500/" + self
+        return URL(string: urlString)
+    }
+}
+

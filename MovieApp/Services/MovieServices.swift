@@ -30,7 +30,7 @@ extension MovieServices: Service {
             return "/3/discover/movie"
 
         case .movieDetail(let movieID):
-            return "3/movies/" + movieID
+            return "/3/movie/" + movieID
         }
     }
     

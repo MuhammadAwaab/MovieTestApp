@@ -39,10 +39,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.getCellIdentifier(), for: indexPath)
-        //cell.viewModel = viewModel.getCellViewModel(at: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.getCellIdentifier(), for: indexPath) as! MovieListCell
+        cell.resultObjectToDisplay = viewModel.getDataDisplayed(at: indexPath)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.navigateToDetail(selectedCellIndex: indexPath)
+    }
     
 }

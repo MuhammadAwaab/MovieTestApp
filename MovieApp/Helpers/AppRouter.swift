@@ -22,8 +22,8 @@ class DetailRouter: Router {
         if routeID == .showDetail {
             let next = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
             
-            if let stringToPass = parameters as? String {
-                let detailViewModel = DetailViewModel(idToDisplay: stringToPass)
+            if let id = parameters {
+                let detailViewModel = DetailViewModel(idToDisplay: String(describing: id))
                 next.viewModel = detailViewModel
                 context.navigationController?.pushViewController(next, animated: true)
             }
