@@ -10,7 +10,7 @@ import Foundation
 
 class MockDataProvider: DataProviderProtocol {
     func fetchAndProvideListData(completion: @escaping (MovieList?) -> Void) {
-        if let path = Bundle.main.path(forResource: "MovieAppSampleJson", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "MoviesAppSampleJson", ofType: "json") {
                   do {
                       let fileUrl = URL(fileURLWithPath: path)
                       // Getting data from JSON file using the file URL
